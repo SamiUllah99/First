@@ -1,0 +1,105 @@
+<?php
+$btnSubmit="";
+$courses="";
+
+$errcourses="";
+
+if(isset($_POST["btnSubmit"])) {
+			$btnSubmit = addslashes($_POST["btnSubmit"]);	
+		if(empty($_POST["courses"])) {
+			$errcourses= "Please select a Course";
+		} else{
+		  $courses = addslashes($_POST["courses"]);
+		}
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Courses - Student Portal</title>
+	<?php require('inc/links.php');   ?>
+<style>
+.error {color: #FF0000;}
+</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+				<!-- Navbar Start-->
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 sidebars">	
+				<?php require('nav.php'); ?>
+			</div>
+				<!-- Navbar End-->
+			
+			<!-- Main Contents -->
+			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+				<br>
+				<div class="panel panel-default">
+					<div class="panel-heading panel-head">
+						Course Contents
+					</div>
+					<div class="panel-body">
+						<br>
+						<form method="POST" action="" >
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
+								<center>
+									<label>Subject:</label>
+								</center>
+							</div>
+							
+							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">
+								<select name="courses"  class="form-control" required >
+									<option value="" selected disabled>Select Subject</option><span class="error" ><?php echo $errcourses ?></span>
+									<option value="">English</option>
+									<option value="">Math</option>
+									<option value="">Physics</option>
+								</select>
+							</div>
+							
+							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+								<button type="Submit" class="btn btn-success " name="btnSubmit" id="btnOK">Submit</button>
+							</div>
+							&nbsp;
+							<hr>
+							<br>
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th class="col-lg-1">#</th>
+										<th class="col-lg-3">Title</th>
+										<th class="col-lg-6">Description</th>
+										<th class="col-lg-2">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>Chapter # 1</td>
+										<td>The Dying Sun</td>
+										<td><a id="btnDownload" name="btnDownload" class="btn btn-primary btn-xs" role="button">Download</a></td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>Chapter # 2</td>
+										<td>Ozymandias</td>
+										<td><a id="btnDownload" name="btnDownload"class="btn btn-primary btn-xs" role="button">Download</a></td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>Chapter # 3</td>
+										<td>Mirror</td>
+										<td><a id="btnDownload" name="btnDownload"class="btn btn-primary btn-xs" role="button">Download</a></td>
+								  </tr>
+								</tbody>
+							</table>
+						</form>
+					</div>
+				</div>      <!-- Panel End -->
+				
+			</div>
+				<!-- Main Contents End -->
+		</div>
+	</div>
+	
+</body>
+</html>
